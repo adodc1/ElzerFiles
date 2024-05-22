@@ -84,7 +84,7 @@ public class CryptoAES {
 	 * @return
 	 * @throws Exception
 	 */
-	private SecretKey localKeyGenerator() throws Exception {
+	public SecretKey localKeyGenerator() throws Exception {
 		KeyGenerator keyGen = KeyGenerator.getInstance(CryptoConstants.ALGORITMO);
 		keyGen.init(CryptoConstants.BLOQUES); // Puedes usar 128, 192 o 256 bits
 		SecretKey secretKey = new SecretKeySpec(CryptoConstants.CRYPTOKEY, CryptoConstants.ALGORITMO);
