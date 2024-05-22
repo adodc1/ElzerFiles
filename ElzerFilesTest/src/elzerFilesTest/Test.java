@@ -55,11 +55,17 @@ public class Test {
 		ini2.addSection("PEPE002");
 		ini2.addParameter("primero", 123);
 		try {
-			ini2.writeIniFile(false);
+			ini2.writeIniFile(true);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
+		
+		
+		
+		
+		
+		
 	}
 
 	public static void main(String[] args) {
