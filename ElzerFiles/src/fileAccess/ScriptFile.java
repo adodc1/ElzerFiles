@@ -15,11 +15,11 @@ public class ScriptFile {
 	}
 
 	public boolean isExistFile() {
-		return !this.file.isError();
+		return this.file.isExist();
 	}
 
 	public ArrayList<String> readScriptFile() throws IOException, FileNotFoundException {
-		if (!this.file.isExist()) {
+		if (this.file.isExist()) {
 			return this.file.readAll();
 		} else {
 			throw new FileNotFoundException(this.getClass().getCanonicalName()

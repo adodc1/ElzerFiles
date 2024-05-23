@@ -15,7 +15,7 @@ public class FileScriptAccess {
 	public FileScriptAccess(String fileName) {
 		if (fileName != null) {
 			this.fichero = new File(fileName);
-			this.fileExist = !this.fichero.exists();
+			this.fileExist = this.fichero.exists();
 			this.fileError = !this.fileExist;
 		} else {
 			throw new NullPointerException(

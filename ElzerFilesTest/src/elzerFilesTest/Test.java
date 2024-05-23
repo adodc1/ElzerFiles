@@ -31,13 +31,16 @@ public class Test {
 
 		ScriptFile fichero = new ScriptFile("ElzerTrenes.conf");
 		try {
-			fichero.readScriptFile();
-			Iterator<String> lista = fichero.readScriptFile().iterator();
-			while (lista.hasNext()) {
-				String string = (String) lista.next();
-				System.out.println(string);
+			if (fichero.isExistFile()) {
+				fichero.readScriptFile();
+				Iterator<String> lista = fichero.readScriptFile().iterator();
+				while (lista.hasNext()) {
+					String string = (String) lista.next();
+					System.out.println(string);
+				}
+			}else {
+				System.out.println("No existe el fichero SCRIPT");
 			}
-
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -60,12 +63,6 @@ public class Test {
 			e.printStackTrace();
 		}
 
-		
-		
-		
-		
-		
-		
 	}
 
 	public static void main(String[] args) {
