@@ -29,7 +29,7 @@ public class Test {
 			e.printStackTrace();
 		}
 
-		ScriptFile fichero = new ScriptFile("ElzerTrenes.conf");
+		ScriptFile fichero = new ScriptFile("SinNombre1.conf");
 		try {
 			if (fichero.isExistFile()) {
 				fichero.readScriptFile();
@@ -66,7 +66,6 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-
 		new Test();
 	}
 

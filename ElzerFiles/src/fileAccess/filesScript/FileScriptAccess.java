@@ -63,20 +63,24 @@ public class FileScriptAccess {
 	public ArrayList<String> readAll() throws IOException {
 		ArrayList<String> listaOrdenes = new ArrayList<String>();
 		try {
-			CryptoFileReader buffer = new CryptoFileReader(this.fichero);
+			if (this.fichero.canRead() && this.fichero.canWrite() && this.fichero.exists()
+					&& this.fichero.length() > 0) {
 
-			byte[] bloqueLeido = buffer.readAllBytes();
-			byte[] desencriptado = buffer.decrypt(bloqueLeido);
-			buffer.buildToLine(desencriptado);
+				CryptoFileReader buffer = new CryptoFileReader(this.fichero);
 
-			String lineaLeida = buffer.readLine();
-			while (lineaLeida != null) {
-				if ((!lineaLeida.startsWith("#")) && (lineaLeida.length() > 1)) {
-					listaOrdenes.add(lineaLeida);
+				byte[] bloqueLeido = buffer.readAllBytes();
+				byte[] desencriptado = buffer.decrypt(bloqueLeido);
+				buffer.buildToLine(desencriptado);
+
+				String lineaLeida = buffer.readLine();
+				while (lineaLeida != null) {
+					if ((!lineaLeida.startsWith("#")) && (lineaLeida.length() > 1)) {
+						listaOrdenes.add(lineaLeida);
+					}
+					lineaLeida = buffer.readLine();
 				}
-				lineaLeida = buffer.readLine();
+				buffer.close();
 			}
-			buffer.close();
 
 		} catch (IOException e) {
 			this.fileError = true;
@@ -84,7 +88,7 @@ public class FileScriptAccess {
 			IOException ex = new IOException(this.getClass().getCanonicalName() + ".readAll: \n" + e.getMessage());
 			ex.setStackTrace(e.getStackTrace());
 			throw ex;
-			
+
 		} catch (Exception e) {
 			IOException ex = new IOException(this.getClass().getCanonicalName() + ".readAll: \n" + e.getMessage());
 			ex.setStackTrace(e.getStackTrace());
