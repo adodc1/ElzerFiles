@@ -73,6 +73,7 @@ public class FileIniAccess {
 				while ((readedLine = buffer.readLine()) != null) {
 					if ((!readedLine.startsWith("#")) && (readedLine.length() > 1)) {
 						if (readedLine.trim().startsWith("[") && readedLine.trim().endsWith("]")) {
+							// Lectura de una seccion.
 							section = readedLine.replace('[', ' ').replace(']', ' ').trim().toUpperCase();
 							if (!this.table.isExistSection(section)) {
 								this.table.addSection(section);
@@ -83,8 +84,11 @@ public class FileIniAccess {
 										+ "Seccion repetida <" + section + "> en el fichero " + this.file.getPath());
 							}
 						} else {
-							parametro = readedLine.trim().split("=");
+							// Lectura de un parametro. El array siempre tendra dos elementos.
+							parametro = readedLine.trim().split("=", 2);
+
 							if (parametro.length == 2) {
+								// El parametro tiene un valor asignado.
 								if (parametro[0].length() > 0) {
 									if (!this.table.isExistParameter(section, parametro[0])) {
 										this.table.addParameter(section, parametro[0],
