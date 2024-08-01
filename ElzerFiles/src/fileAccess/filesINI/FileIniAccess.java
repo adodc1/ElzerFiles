@@ -13,6 +13,17 @@ public class FileIniAccess {
 	private boolean fileError = false;
 	private TableStructure table;
 
+	/**
+	 * <p>
+	 * Crea el descriptor de fichero para acceder a los datos.
+	 * </p>
+	 * <p>
+	 * Comprueba que el fichero existe y se puede leer.
+	 * </p>
+	 * 
+	 * @param name : String : Ruta hasta el fichero ini.
+	 * @throws NullPointerException Ocurre si el nombre del fichero es nulo.
+	 */
 	public FileIniAccess(String name) {
 		if (name != null) {
 			this.file = new File(name);
@@ -24,6 +35,13 @@ public class FileIniAccess {
 		this.table = null;
 	}
 
+	/**
+	 * <p>
+	 * Devuelve la ruta al fichero ini.
+	 * </p>
+	 * 
+	 * @return String : Ruta hasta el ficheor ini.
+	 */
 	public String getFileName() {
 		return this.file.getName();
 	}

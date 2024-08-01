@@ -155,7 +155,7 @@ public class IniFile {
 	/**
 	 * Obtener el valor asociado a un parametro con formato String.
 	 * 
-	 * @param name String : Nombre del parametro.
+	 * @param name : String : Nombre del parametro.
 	 * @return String : Valor asociado al parametro.
 	 */
 	public String getParameterStr(String name) {
