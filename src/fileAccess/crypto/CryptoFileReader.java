@@ -63,7 +63,12 @@ public class CryptoFileReader extends FileInputStream {
 	 */
 	public void buildToLine(byte[] buffer) {
 		if (buffer != null) {
-			this.list.addAll(Arrays.asList(new String(this.fileReaded).split("\n")));
+			
+			this.list.addAll(Arrays.asList(new String(buffer).split("\\r\\n")));
+			this.iterador = this.list.iterator();
+			
+		} else if (this.fileReaded != null) {
+			this.list.addAll(Arrays.asList(new String(this.fileReaded).split("\\r\\n")));
 			this.iterador = this.list.iterator();
 		}
 	}
@@ -136,11 +141,10 @@ public class CryptoFileReader extends FileInputStream {
 	public byte[] decrypt(byte[] buffer) throws Exception {
 		if (CryptoStadistics.isCrypted(buffer)) {
 			this.fileReaded = crypto.decryptoLineString(buffer);
-			return this.fileReaded;
 		} else {
 			this.fileReaded = buffer;
-			return this.fileReaded;
 		}
+		return this.fileReaded;
 	}
 
 }

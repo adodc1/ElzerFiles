@@ -59,7 +59,7 @@ public class CryptoFileWriter extends FileOutputStream {
 	 * @param text String : Texto para insertar.
 	 */
 	public void writeLine(String text) {
-		this.lista += text;
+		this.lista += text + "\r\n";
 	}
 
 	@Override
