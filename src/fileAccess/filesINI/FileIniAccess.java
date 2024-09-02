@@ -161,6 +161,7 @@ public class FileIniAccess {
 				Iterator<String> itSection = this.table.iteratorSection();
 				while (itSection.hasNext()) {
 					String section = (String) itSection.next();
+					buffer.writeLine("#");
 					buffer.writeLine("[" + section + "]");
 					Iterator<String> itParamName = this.table.iteratorParamName(section);
 					Iterator<String> itParamValue = this.table.iteratorParamValue(section);

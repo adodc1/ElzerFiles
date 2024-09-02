@@ -57,20 +57,25 @@ public class CryptoFileReader extends FileInputStream {
 	}
 
 	/**
-	 * Ordena una lista con todas las lineas procedentes del fichero..
+	 * Crea una lista con todas las lineas procedentes del fichero.
+	 */
+	public void buildToLine() {
+		if (this.fileReaded != null) {
+			this.list.addAll(Arrays.asList(new String(this.fileReaded).split("\\r\\n")));
+			this.iterador = this.list.iterator();
+		}
+	}
+
+	/**
+	 * Crea una lista con todas las lineas procedentes del fichero.
 	 * 
 	 * @param buffer : byte[] : bloque de datos.
 	 */
 	public void buildToLine(byte[] buffer) {
 		if (buffer != null) {
-			
 			this.list.addAll(Arrays.asList(new String(buffer).split("\\r\\n")));
 			this.iterador = this.list.iterator();
-			
-		} else if (this.fileReaded != null) {
-			this.list.addAll(Arrays.asList(new String(this.fileReaded).split("\\r\\n")));
-			this.iterador = this.list.iterator();
-		}
+		} 
 	}
 
 	/**
